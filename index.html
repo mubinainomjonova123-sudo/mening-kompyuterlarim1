@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="uz" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TECHNO SHOP — Kompyuter va Noutbuklar Internet-Do‘koni</title>
+  <link rel="stylesheet" href="./style.css">
+  <script src="./app.js" defer></script>
+</head>
+<body>
+  <!-- Juma Aksiyasi Top Banner -->
+  <div class="friday-banner" id="fridayBanner">
+    <div class="container friday-banner-inner">
+      <div class="friday-badge-wrap">
+        <span class="pulse-dot"></span>
+        <strong data-i18n="fridayTitle">JUMA AKSIYASI (FRIDAY SALE) — 50% CHEGIRMA!</strong>
+        <span class="friday-sub" data-i18n="fridayGiftInfo">+ Har bir kompyuterga BEPUL Gaming Mouse va Headset!</span>
+      </div>
+      <div class="friday-controls">
+        <div class="countdown-box" aria-label="Aksiya tugash vaqti">
+          <span class="cd-item"><b id="cdHours">14</b><small data-i18n="cdH">s</small></span>:
+          <span class="cd-item"><b id="cdMinutes">38</b><small data-i18n="cdM">d</small></span>:
+          <span class="cd-item"><b id="cdSeconds">45</b><small data-i18n="cdS">son</small></span>
+        </div>
+        <button type="button" class="friday-toggle-btn" id="fridayToggleBtn" title="Juma aksiyasini yoqish/o'chirish">
+          <span id="fridayStatusText">ON</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header & Navbar -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="#top" class="brand-logo" aria-label="TECHNO SHOP Bosh sahifa">
+        <span class="logo-icon">⚡</span>
+        <span class="logo-text">TECHNO<b>SHOP</b></span>
+      </a>
+
+      <!-- Qidiruv (Desktop) -->
+      <div class="search-bar-wrap desktop-search">
+        <input type="search" id="searchInput" class="search-input" placeholder="Kompyuter, noutbuk yoki RTX qidiring..." data-i18n-placeholder="searchPlaceholder" autocomplete="off">
+        <button type="button" id="clearSearchBtn" class="clear-search-btn" aria-label="Qidiruvni tozalash" hidden>✕</button>
+        <span class="search-icon">🔍</span>
+      </div>
+
+      <!-- Desktop Nav Links -->
+      <nav class="main-nav" id="mainNav" aria-label="Asosiy menyu">
+        <a href="#catalogSection" class="nav-link" data-i18n="navCatalog">Katalog</a>
+        <a href="#fridayBanner" class="nav-link" data-i18n="navPromo">Juma Aksiyasi</a>
+        <a href="#contactSection" class="nav-link" data-i18n="navContact">Aloqa</a>
+      </nav>
+
+      <!-- Header Actions -->
+      <div class="header-actions">
+        <!-- Til almashtirgich -->
+        <div class="lang-switcher" role="group" aria-label="Tilni tanlash">
+          <button type="button" class="lang-btn active" data-lang="uz">🇺🇿 UZ</button>
+          <button type="button" class="lang-btn" data-lang="en">🇬🇧 EN</button>
+          <button type="button" class="lang-btn" data-lang="ru">🇷🇺 RU</button>
+        </div>
+
+        <!-- Tun/Kun rejimi -->
+        <button type="button" class="icon-btn theme-btn" id="themeToggleBtn" aria-label="Tun va kun rejimini almashtirish">
+          <span class="icon-sun" aria-hidden="true">☀️</span>
+          <span class="icon-moon" aria-hidden="true">🌙</span>
+        </button>
+
+        <!-- Savatcha tugmasi -->
+        <button type="button" class="cart-trigger-btn" id="openCartBtn" aria-label="Savatchani ochish">
+          <span class="cart-icon">🛒</span>
+          <span class="cart-label" data-i18n="cartBtn">Savatcha</span>
+          <span class="cart-badge" id="cartCountBadge">0</span>
+        </button>
+
+        <!-- Mobil Hamburger tugma -->
+        <button type="button" class="hamburger-btn" id="hamburgerBtn" aria-label="Menyuni ochish" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobil menyu va mobil qidiruv -->
+    <div class="mobile-drawer" id="mobileDrawer">
+      <div class="container mobile-drawer-inner">
+        <div class="search-bar-wrap mobile-search">
+          <input type="search" id="mobileSearchInput" class="search-input" placeholder="Mahsulot qidirish..." data-i18n-placeholder="searchPlaceholder">
+          <span class="search-icon">🔍</span>
+        </div>
+        <nav class="mobile-nav-links">
+          <a href="#catalogSection" class="mobile-link" data-i18n="navCatalog">Katalog</a>
+          <a href="#fridayBanner" class="mobile-link" data-i18n="navPromo">Juma Aksiyasi</a>
+          <a href="#contactSection" class="mobile-link" data-i18n="navContact">Aloqa</a>
+        </nav>
+        <div class="mobile-lang-row">
+          <button type="button" class="lang-btn mobile-lang" data-lang="uz">🇺🇿 O‘zbek</button>
+          <button type="button" class="lang-btn mobile-lang" data-lang="en">🇬🇧 English</button>
+          <button type="button" class="lang-btn mobile-lang" data-lang="ru">🇷🇺 Русский</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- Hero Avtomatik Carousel -->
+    <section class="hero-section">
+      <div class="container">
+        <div class="carousel-wrapper" id="heroCarousel">
+          <div class="carousel-track" id="carouselTrack">
+            <!-- Slide 1 -->
+            <article class="carousel-slide active">
+              <div class="slide-content">
+                <span class="slide-tag" data-i18n="slide1Tag">🔥 JUMA SUPER TAKLIFI</span>
+                <h1 data-i18n="slide1Title">RTX 4090 va RTX 4080 Gaming PC — 50% Chegirma!</h1>
+                <p data-i18n="slide1Desc">Har bir kuchli kompyuter xaridiga Gaming Mouse va Gaming Headset mutlaqo BEPUL qo‘shib beriladi.</p>
+                <a href="#catalogSection" class="btn btn-primary" data-i18n="shopNowBtn">Hoziroq xarid qilish</a>
+              </div>
+              <div class="slide-visual">
+                <img src="https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=900&q=80" alt="Gaming PC RTX 4090" onerror="this.src='https://placehold.co/800x500/111827/38bdf8?text=RTX+4090+Gaming+PC'">
+              </div>
+            </article>
+
+            <!-- Slide 2 -->
+            <article class="carousel-slide">
+              <div class="slide-content">
+                <span class="slide-tag" data-i18n="slide2Tag">💻 APPLE & ULTRABOOK</span>
+                <h2 data-i18n="slide2Title">MacBook Pro M3 va Dell XPS 15 — Professional Tanlov</h2>
+                <p data-i18n="slide2Desc">Dizaynerlar, dasturchilar va biznes uchun yuqori unumdorlikka ega original noutbuklar.</p>
+                <a href="#catalogSection" class="btn btn-primary" data-i18n="viewCatalogBtn">Katalogni ko‘rish</a>
+              </div>
+              <div class="slide-visual">
+                <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=900&q=80" alt="MacBook Pro M3" onerror="this.src='https://placehold.co/800x500/111827/38bdf8?text=MacBook+Pro+M3'">
+              </div>
+            </article>
+
+            <!-- Slide 3 -->
+            <article class="carousel-slide">
+              <div class="slide-content">
+                <span class="slide-tag" data-i18n="slide3Tag">🎮 PRO GAMING LAPTOPS</span>
+                <h2 data-i18n="slide3Title">ASUS ROG Strix G16 & Lenovo Legion 5</h2>
+                <p data-i18n="slide3Desc">240Hz ekran, mukammal sovutish tizimi va rasmiy kafolat bilan O‘zbekiston bo‘ylab yetkazib berish.</p>
+                <a href="#catalogSection" class="btn btn-primary" data-i18n="shopNowBtn">Hoziroq xarid qilish</a>
+              </div>
+              <div class="slide-visual">
+                <img src="https://images.unsplash.com/photo-1603302576837-37561b2e2302?auto=format&fit=crop&w=900&q=80" alt="ASUS ROG Strix" onerror="this.src='https://placehold.co/800x500/111827/38bdf8?text=ASUS+ROG+Strix'">
+              </div>
+            </article>
+          </div>
+
+          <button type="button" class="carousel-arrow prev" id="carouselPrev" aria-label="Oldingi slayd">❮</button>
+          <button type="button" class="carousel-arrow next" id="carouselNext" aria-label="Keyingi slayd">❯</button>
+          <div class="carousel-dots" id="carouselDots"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Katalog, Filter va Saralash -->
+    <section class="catalog-section" id="catalogSection">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title" data-i18n="catalogHeading">Kompyuterlar va Noutbuklar Katalogi</h2>
+            <p class="section-subtitle" id="productsCountLabel">26 ta mahsulot topildi</p>
+          </div>
+
+          <div class="sort-box">
+            <label for="sortSelect" data-i18n="sortLabel">Saralash:</label>
+            <select id="sortSelect" class="sort-select">
+              <option value="default" data-i18n="sortDefault">Standart</option>
+              <option value="price-asc" data-i18n="sortPriceAsc">Narx: Arzondan qimmatga</option>
+              <option value="price-desc" data-i18n="sortPriceDesc">Narx: Qimmatdan arzonga</option>
+              <option value="rating-desc" data-i18n="sortRating">Yuqori reyting</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Kategoriyalar Filter -->
+        <div class="category-filters" id="categoryFilters" role="tablist">
+          <button type="button" class="filter-chip active" data-category="all" data-i18n="catAll">Barchasi (26)</button>
+          <button type="button" class="filter-chip" data-category="gaming-pc" data-i18n="catGamingPC">Gaming PC</button>
+          <button type="button" class="filter-chip" data-category="gaming-laptop" data-i18n="catGamingLaptop">Gaming Noutbuklar</button>
+          <button type="button" class="filter-chip" data-category="ultrabook" data-i18n="catUltrabook">MacBook & Ultrabook</button>
+          <button type="button" class="filter-chip" data-category="office" data-i18n="catOffice">Ofis va O‘qish</button>
+        </div>
+
+        <!-- Mahsulotlar Grid (26 ta mahsulot JS orqali chiziladi) -->
+        <div class="products-grid" id="productsGrid"></div>
+
+        <!-- Qidiruv natijasi bo'sh bo'lganda -->
+        <div class="empty-state" id="emptySearchState" hidden>
+          <p data-i18n="noProductsFound">So‘rovingiz bo‘yicha mahsulot topilmadi.</p>
+          <button type="button" class="btn btn-primary" id="resetFiltersBtn" data-i18n="resetFilters">Filtrlarni tozalash</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Afzalliklar & Aloqa -->
+    <section class="info-section" id="contactSection">
+      <div class="container">
+        <div class="features-grid">
+          <div class="feature-card">
+            <span class="feature-icon">🚚</span>
+            <h3 data-i18n="featDeliveryTitle">Tezkor Yetkazib Berish</h3>
+            <p data-i18n="featDeliveryDesc">Toshkent bo‘ylab 2 soat ichida, barcha viloyatlarga 24 soatda bepul yetkazamiz.</p>
+          </div>
+          <div class="feature-card">
+            <span class="feature-icon">🛡️</span>
+            <h3 data-i18n="featWarrantyTitle">1 Yil Rasmiy Kafolat</h3>
+            <p data-i18n="featWarrantyDesc">Barcha kompyuter va noutbuklarga rasmiy servis kafolati taqdim etiladi.</p>
+          </div>
+          <div class="feature-card">
+            <span class="feature-icon">🎁</span>
+            <h3 data-i18n="featGiftTitle">Juma Sovg‘alari</h3>
+            <p data-i18n="featGiftDesc">Juma aksiyasi doirasida har bir mos kompyuterga Gaming Mouse + Headset sovg‘a!</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <div class="brand-logo footer-logo">
+          <span class="logo-icon">⚡</span>
+          <span class="logo-text">TECHNO<b>SHOP</b></span>
+        </div>
+        <p class="footer-desc" data-i18n="footerAbout">O‘zbekistondagi eng yirik va ishonchli kompyuter texnikalari internet-do‘koni.</p>
+      </div>
+      <div>
+        <h4 data-i18n="footerNavTitle">Bo‘limlar</h4>
+        <ul class="footer-links">
+          <li><a href="#catalogSection" data-i18n="navCatalog">Katalog</a></li>
+          <li><a href="#fridayBanner" data-i18n="navPromo">Juma Aksiyasi</a></li>
+          <li><a href="#contactSection" data-i18n="navContact">Aloqa</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 data-i18n="footerContactTitle">Aloqa markazi</h4>
+        <ul class="footer-links">
+          <li>📞 +998 (90) 123-45-67</li>
+          <li>📍 Toshkent sh., Malika savdo majmuasi, A-12</li>
+          <li>🕒 09:00 – 21:00 (Har kuni)</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 TECHNO SHOP. <span data-i18n="footerRights">Barcha huquqlar himoyalangan.</span></p>
+    </div>
+  </footer>
+
+  <!-- Mahsulot Batafsil Modal Oynasi -->
+  <div class="modal-backdrop" id="productModalBackdrop" hidden>
+    <div class="modal-box product-modal" role="dialog" aria-modal="true" aria-labelledby="modalProductTitle">
+      <button type="button" class="modal-close-btn" id="closeProductModal" aria-label="Yopish">✕</button>
+      <div class="modal-product-body" id="modalProductContent"></div>
+    </div>
+  </div>
+
+  <!-- Savatcha Drawer (Yon panel) -->
+  <div class="cart-backdrop" id="cartBackdrop" hidden></div>
+  <aside class="cart-drawer" id="cartDrawer" aria-label="Savatcha">
+    <div class="cart-header">
+      <h3 data-i18n="cartTitle">Sizning Savatchangiz</h3>
+      <button type="button" class="modal-close-btn" id="closeCartBtn" aria-label="Savatchani yopish">✕</button>
+    </div>
+
+    <div class="cart-body" id="cartItemsContainer"></div>
+
+    <!-- Juma Aksiyasi Bepul Sovg'alar Bloki -->
+    <div class="cart-gifts-box" id="cartGiftsBox" hidden>
+      <div class="gifts-header">
+        <span>🎁</span>
+        <strong data-i18n="freeGiftsTitle">Juma Aksiyasi Sovg‘alari (BEPUL):</strong>
+      </div>
+      <ul class="gifts-list" id="cartGiftsList"></ul>
+    </div>
+
+    <div class="cart-footer" id="cartFooter" hidden>
+      <div class="summary-row">
+        <span data-i18n="subtotalLabel">Asl summa:</span>
+        <span id="cartSubtotal">0 so‘m</span>
+      </div>
+      <div class="summary-row discount-row">
+        <span data-i18n="discountLabel">Chegirma:</span>
+        <span id="cartDiscount">-0 so‘m</span>
+      </div>
+      <div class="summary-row total-row">
+        <strong data-i18n="totalLabel">Jami to‘lov:</strong>
+        <strong id="cartTotal">0 so‘m</strong>
+      </div>
+
+      <div class="cart-actions">
+        <button type="button" class="btn btn-outline" id="clearCartBtn" data-i18n="clearCartBtn">Savatchani tozalash</button>
+        <button type="button" class="btn btn-primary" id="openCheckoutBtn" data-i18n="checkoutBtn">Buyurtma berish</button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Buyurtma Berish (Checkout) Modal Oynasi -->
+  <div class="modal-backdrop" id="checkoutModalBackdrop" hidden>
+    <div class="modal-box checkout-modal" role="dialog" aria-modal="true" aria-labelledby="checkoutModalTitle">
+      <button type="button" class="modal-close-btn" id="closeCheckoutModal" aria-label="Yopish">✕</button>
+      <h3 id="checkoutModalTitle" data-i18n="checkoutFormTitle">Buyurtmani rasmiylashtirish</h3>
+
+      <form id="checkoutForm" class="checkout-form" novalidate>
+        <div class="form-group">
+          <label for="custName" data-i18n="labelName">Ism va familiyangiz *</label>
+          <input type="text" id="custName" required placeholder="Masalan: Sardor Karimov">
+          <small class="error-msg" id="errName"></small>
+        </div>
+
+        <div class="form-group">
+          <label for="custPhone" data-i18n="labelPhone">Telefon raqamingiz *</label>
+          <input type="tel" id="custPhone" required placeholder="+998 90 123 45 67">
+          <small class="error-msg" id="errPhone"></small>
+        </div>
+
+        <div class="form-group">
+          <label for="custAddress" data-i18n="labelAddress">Yetkazib berish manzili *</label>
+          <input type="text" id="custAddress" required placeholder="Shahar, tuman, ko‘cha, uy">
+          <small class="error-msg" id="errAddress"></small>
+        </div>
+
+        <div class="form-group">
+          <label for="custPayment" data-i18n="labelPayment">To‘lov turi</label>
+          <select id="custPayment">
+            <option value="cash" data-i18n="payCash">Naqd pul (Qabul qilganda)</option>
+            <option value="card" data-i18n="payCard">Uzcard / Humo / Visa</option>
+            <option value="installment" data-i18n="payInstallment">Muddatli to‘lov (12 oy)</option>
+          </select>
+        </div>
+
+        <div class="checkout-total-preview">
+          <span data-i18n="totalLabel">Jami to‘lov:</span>
+          <strong id="checkoutTotalAmount">0 so‘m</strong>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block" data-i18n="confirmOrderBtn">Buyurtmani tasdiqlash</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast Bildirishnoma -->
+  <div class="toast-container" id="toastContainer"></div>
+  <script src="./app.js"></script>
+</body>
+</html>
